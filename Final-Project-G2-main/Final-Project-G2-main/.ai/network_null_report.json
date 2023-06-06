@@ -1,0 +1,372 @@
+{
+    "_allocate_inputs": 4,
+    "_allocate_outputs": 4,
+    "cli_parameters": "generate --name network -m C:/Users/Eren/Downloads/mod_for_real.tflite --type tflite --compression none --verbosity 1 --workspace C:\\Users\\Eren\\AppData\\Local\\Temp\\mxAI_workspace8365496021027008164062398056233728 --output C:\\Users\\Eren\\.stm32cubemx\\network_output --allocate-inputs --series stm32l4 --allocate-outputs",
+    "cli_version": {
+        "major": 1,
+        "micro": 0,
+        "minor": 7
+    },
+    "cli_version_str": "1.7.0",
+    "compression": {
+        "factor": null,
+        "layers": {}
+    },
+    "date_time": "Wed Apr 12 12:20:58 2023",
+    "error": 0,
+    "error_str": [],
+    "exec_cmd": "generate",
+    "exec_duration": 0.0,
+    "hash": "e7c3023aa3f28d7ac25fd938bfd42c03",
+    "inputs": [
+        "serving_default_input_10"
+    ],
+    "layers": [
+        {
+            "c_id": [
+                0
+            ],
+            "extras": {
+                "n_macc": 0,
+                "n_params": 0,
+                "psize": 0,
+                "rom_output": {
+                    "c_size": 288,
+                    "fmt": {
+                        "format": "int8_t"
+                    },
+                    "shape": [
+                        1,
+                        1,
+                        288,
+                        1
+                    ]
+                },
+                "rom_size": 0
+            },
+            "id": 0,
+            "inputs": [],
+            "name": "serving_default_input_10",
+            "original": "",
+            "type": "Input"
+        },
+        {
+            "c_id": [],
+            "extras": {
+                "n_macc": 576,
+                "n_params": 0,
+                "psize": 0,
+                "rom_output": {
+                    "c_size": 1152,
+                    "fmt": {
+                        "format": "float"
+                    },
+                    "shape": [
+                        1,
+                        1,
+                        288,
+                        1
+                    ]
+                },
+                "rom_size": 0
+            },
+            "id": 0,
+            "inputs": [
+                "serving_default_input_10"
+            ],
+            "name": "cast_0",
+            "original": "CAST",
+            "type": "Cast"
+        },
+        {
+            "c_id": [
+                1,
+                2
+            ],
+            "extras": {
+                "n_macc": 147968,
+                "n_params": 147968,
+                "psize": 591872,
+                "rom_output": {
+                    "c_size": 2048,
+                    "fmt": {
+                        "format": "float"
+                    },
+                    "shape": [
+                        1,
+                        1,
+                        512,
+                        1
+                    ]
+                },
+                "rom_size": 591872
+            },
+            "id": 1,
+            "inputs": [
+                "cast_0"
+            ],
+            "name": "dense_1",
+            "original": "FULLY_CONNECTED",
+            "type": "Dense"
+        },
+        {
+            "c_id": [],
+            "extras": {
+                "n_macc": 512,
+                "n_params": 0,
+                "psize": 0,
+                "rom_output": {
+                    "c_size": 2048,
+                    "fmt": {
+                        "format": "float"
+                    },
+                    "shape": [
+                        1,
+                        1,
+                        512,
+                        1
+                    ]
+                },
+                "rom_size": 0
+            },
+            "id": 1,
+            "inputs": [
+                "dense_1"
+            ],
+            "name": "nl_1_nl",
+            "original": "FULLY_CONNECTED",
+            "type": "Nonlinearity"
+        },
+        {
+            "c_id": [
+                3,
+                4
+            ],
+            "extras": {
+                "n_macc": 132354,
+                "n_params": 132354,
+                "psize": 529416,
+                "rom_output": {
+                    "c_size": 1032,
+                    "fmt": {
+                        "format": "float"
+                    },
+                    "shape": [
+                        1,
+                        1,
+                        258,
+                        1
+                    ]
+                },
+                "rom_size": 529416
+            },
+            "id": 2,
+            "inputs": [
+                "nl_1_nl"
+            ],
+            "name": "dense_2",
+            "original": "FULLY_CONNECTED",
+            "type": "Dense"
+        },
+        {
+            "c_id": [],
+            "extras": {
+                "n_macc": 258,
+                "n_params": 0,
+                "psize": 0,
+                "rom_output": {
+                    "c_size": 1032,
+                    "fmt": {
+                        "format": "float"
+                    },
+                    "shape": [
+                        1,
+                        1,
+                        258,
+                        1
+                    ]
+                },
+                "rom_size": 0
+            },
+            "id": 2,
+            "inputs": [
+                "dense_2"
+            ],
+            "name": "nl_2_nl",
+            "original": "FULLY_CONNECTED",
+            "type": "Nonlinearity"
+        },
+        {
+            "c_id": [
+                5,
+                6
+            ],
+            "extras": {
+                "n_macc": 33152,
+                "n_params": 33152,
+                "psize": 132608,
+                "rom_output": {
+                    "c_size": 512,
+                    "fmt": {
+                        "format": "float"
+                    },
+                    "shape": [
+                        1,
+                        1,
+                        128,
+                        1
+                    ]
+                },
+                "rom_size": 132608
+            },
+            "id": 3,
+            "inputs": [
+                "nl_2_nl"
+            ],
+            "name": "dense_3",
+            "original": "FULLY_CONNECTED",
+            "type": "Dense"
+        },
+        {
+            "c_id": [],
+            "extras": {
+                "n_macc": 128,
+                "n_params": 0,
+                "psize": 0,
+                "rom_output": {
+                    "c_size": 512,
+                    "fmt": {
+                        "format": "float"
+                    },
+                    "shape": [
+                        1,
+                        1,
+                        128,
+                        1
+                    ]
+                },
+                "rom_size": 0
+            },
+            "id": 3,
+            "inputs": [
+                "dense_3"
+            ],
+            "name": "nl_3_nl",
+            "original": "FULLY_CONNECTED",
+            "type": "Nonlinearity"
+        },
+        {
+            "c_id": [
+                7
+            ],
+            "extras": {
+                "n_macc": 1806,
+                "n_params": 1806,
+                "psize": 7224,
+                "rom_output": {
+                    "c_size": 56,
+                    "fmt": {
+                        "format": "float"
+                    },
+                    "shape": [
+                        1,
+                        1,
+                        14,
+                        1
+                    ]
+                },
+                "rom_size": 7224
+            },
+            "id": 4,
+            "inputs": [
+                "nl_3_nl"
+            ],
+            "name": "dense_4",
+            "original": "FULLY_CONNECTED",
+            "type": "Dense"
+        },
+        {
+            "c_id": [
+                8
+            ],
+            "extras": {
+                "n_macc": 210,
+                "n_params": 0,
+                "psize": 0,
+                "rom_output": {
+                    "c_size": 56,
+                    "fmt": {
+                        "format": "float"
+                    },
+                    "shape": [
+                        1,
+                        1,
+                        14,
+                        1
+                    ]
+                },
+                "rom_size": 0
+            },
+            "id": 5,
+            "inputs": [
+                "dense_4"
+            ],
+            "name": "nl_5",
+            "original": "SOFTMAX",
+            "type": "Nonlinearity"
+        }
+    ],
+    "model_files": [
+        "C:\\Users\\Eren\\Downloads\\mod_for_real.tflite"
+    ],
+    "model_n_params": 315280,
+    "model_name": "mod_for_real",
+    "model_size": 1261120,
+    "model_type": "tflite",
+    "name": "network",
+    "outputs": [
+        "nl_5"
+    ],
+    "ram_io_size": [
+        288,
+        56
+    ],
+    "ram_size": [
+        3200,
+        3200
+    ],
+    "report_version": 1.1,
+    "rom_cfact": 1.0,
+    "rom_heap_inspector": 2048,
+    "rom_inputs": [
+        {
+            "c_size": 288,
+            "c_type": "int8_t",
+            "name": "serving_default_input_10"
+        }
+    ],
+    "rom_n_macc": 316964,
+    "rom_outputs": [
+        {
+            "c_size": 56,
+            "c_type": "float",
+            "name": "nl_5"
+        }
+    ],
+    "rom_size": 1261120,
+    "strategy": "heap_overlay",
+    "tools_api_version": {
+        "major": 1,
+        "micro": 0,
+        "minor": 7
+    },
+    "tools_version": {
+        "extra": "19389",
+        "major": 8,
+        "micro": 0,
+        "minor": 0
+    },
+    "val_error": -1.0,
+    "val_error_desc": "None (None) #-1",
+    "val_metrics": []
+}

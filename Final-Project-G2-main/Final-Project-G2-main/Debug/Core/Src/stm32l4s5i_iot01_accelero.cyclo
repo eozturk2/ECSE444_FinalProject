@@ -1,0 +1,4 @@
+stm32l4s5i_iot01_accelero.c:49:24:BSP_ACCELERO_Init	2
+stm32l4s5i_iot01_accelero.c:90:6:BSP_ACCELERO_DeInit	3
+stm32l4s5i_iot01_accelero.c:107:6:BSP_ACCELERO_LowPower	3
+stm32l4s5i_iot01_accelero.c:125:6:BSP_ACCELERO_AccGetXYZ	3
