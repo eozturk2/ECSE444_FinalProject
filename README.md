@@ -26,13 +26,15 @@ After the implementation was complete, we demoed it for our professor. We strapp
 3 - Sitting tasks: sitting on chair, eating soup, eating meat, pouring water
 4 - "Hand to the face" tasks: using telephone, brushing teeth, combing hair
 
-There were almost no mistakes between these four broad categories. Most of the confusion was while discerning between tasks within each category. For example, descending and climbing stairs were two actions that were often confused, while both of them could sometimes be discerned from walking. Sedentary tasks were almost randomly guessed, but the "hand to the face" tasks were mostly accurate.
+There were almost no mistakes between these four broad categories. Most of the confusion was while discerning between tasks within each category. For example, descending and climbing stairs were two actions that were often confused, while both of them were often confused with walking. Sedentary tasks were almost randomly guessed, but the "hand to the face" tasks were more accurate.
 
 We believe that the difference between the reported accuracy and our model's accuracy originate mostly from the accelerometer measurements. The dataset we used contained information about the orientation of the accelerometer, its sampling rate and the scale of its measurements.[[2]](#1) Missing were the exact location of the accelerometer on the wrist, the model and make of the device, and physical mounting details. Since these details were unknown to us, we were unable to exactly replicate the data acquisition process. 
 
 Moreover, our less-than-ideal mounting method (rubber bands, wired connection to laptop that we had to carry on the other hand) meant that the accelerometer was not firmly attached. Shifts in position during active use may have contributed to the loss in accuracy as compared to the same model running on the PC.
 
-Another possible reasons include our assumptions about the dataset. In the dataset, the movement data are labeled by gender. We assumed that this was not an important detail, and that the same action would generate a similar acceleration pattern regardless of the user's gender. For this reason, we simply disregarded the gender label and used all the dataset as training data. 
+Another potential factor is our suppositions regarding the dataset. The motion data in the dataset is categorized by gender. We presumed that this detail was not significant, and that an identical action would yield a comparable acceleration pattern regardless of the user's gender. As such, we disregarded the gender classification and employed the entire dataset for training. If this assumption proves to be inaccurate, it could lead to diminished model accuracy.
+
+Overall, we believe that this project was successful initial demonstration of our idea of running ML-powered classification on a resource-constrained microcontroller. Even though the classification accuracy was lower than the model running on the PC (about 50% vs. the reported 59%), it has met our ambitions given the 2-week time period for this project and the aforementioned difficulties.
 
 ## References
 <a id="1">[1]</a>
