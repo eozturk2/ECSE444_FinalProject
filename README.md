@@ -5,7 +5,7 @@ The project uses accelerometer data, applies filtering and scaling, and includes
 the system's understanding of movement patterns. All the labeled data is stored in QSPI Flash memory for efficient data management. There are 14 distinct activity categories available. These are brushing teeth, climbing stairs, combing hair, descending stairs, drinking from a glass, eating meat (as in with fork and knife), eating soup (as in with a spoon), getting up from bed, lying down on the bed, pouring water, sitting down on chair, standing up from chair, using telephone and walking.
 
 ## Motivation
-At the end of the course, we had an open-ended final project where we needed to design an implement an application for the ST B-L4S5I-IOT01A boards we had been using for the labs. We found an interesting research paper[[1]](#1) that outlined many different neural network architectures for classifying movements based on wrist-worn accelerometer data. In the paper, the only task of the wrist-worn device is to collect accelerometer data. Both the training and inference processes are run off-board on a powerful PC. We wanted to change this by running the inference model on the wrist-worn microcontroller.
+At the end of the course, we had an open-ended final project where we needed to design an implement an application for the STMicroelectronics [B-L4S5I-IOT01A](https://www.st.com/en/evaluation-tools/b-l4s5i-iot01a.html) boards we had been using for the labs. We found an interesting research paper[[1]](#1) that outlined many different neural network architectures for classifying movements based on wrist-worn accelerometer data. In the paper, the only task of the wrist-worn device is to collect accelerometer data. Both the training and inference processes are run off-board on a powerful PC. We wanted to change this by running the inference model on the wrist-worn microcontroller.
 
 ## Implementation and Challenges
 The first challenge was to choose the suitable network architecture among the ones proposed in the paper. The most successful networks were RNN's (Recurrent Neural Networks), but embedded ML toolchains such as TFLite and X-CUBE-AI require recurrent units to be unrolled into dense layers with identical parameters. Since the RNN's described in the paper have up to 32 recursions, it was impossible to fit the model into the limited memory of our boards. This limited our choice to densely connected networks.
@@ -21,10 +21,10 @@ One challenge in the implementation was the signal processing aspect of the proj
 ## Results
 After the implementation was complete, we demoed it for our professor. We strapped our boards to our wrists using rubber bands and connected the board to the laptop via USB. According to our anectodal observations, the model was accurate around half the time, across 14 different movement categories. We believe that this is decently close to the 59% accuracy reported for the same network running on a PC. We found that the model could discern very well between these broad categories:
 
-1 - Lying down
-2 - Walking tasks: climbing stairs, descending stairs, walking
-3 - Sitting tasks: sitting on chair, eating soup, eating meat, pouring water
-4 - "Hand to the face" tasks: using telephone, brushing teeth, combing hair
+1. Lying down
+2. Walking tasks: climbing stairs, descending stairs, walking
+3. Sitting tasks: sitting on chair, eating soup, eating meat, pouring water
+4. "Hand to the face" tasks: using telephone, brushing teeth, combing hair
 
 There were almost no mistakes between these four broad categories. Most of the confusion was while discerning between tasks within each category. For example, descending and climbing stairs were two actions that were often confused, while both of them were often confused with walking. Sedentary tasks were almost randomly guessed, but the "hand to the face" tasks were more accurate.
 
@@ -34,7 +34,7 @@ Moreover, our less-than-ideal mounting method (rubber bands, wired connection to
 
 Another potential factor is our suppositions regarding the dataset. The motion data in the dataset is categorized by gender. We presumed that this detail was not significant, and that an identical action would yield a comparable acceleration pattern regardless of the user's gender. As such, we disregarded the gender classification and employed the entire dataset for training. If this assumption proves to be inaccurate, it could lead to diminished model accuracy.
 
-Overall, we believe that this project was successful initial demonstration of our idea of running ML-powered classification on a resource-constrained microcontroller. Even though the classification accuracy was lower than the model running on the PC (about 50% vs. the reported 59%), it has met our ambitions given the 2-week time period for this project and the aforementioned difficulties.
+Overall, we believe that this project was a successful initial demonstration of our idea of running ML-powered classification on a resource-constrained microcontroller. Even though the classification accuracy was lower than the model running on the PC (about 50% vs. the reported 59%), it has met our ambitions given the 2-week timeframe allocated to this project and the aforementioned difficulties.
 
 ## References
 <a id="1">[1]</a>
