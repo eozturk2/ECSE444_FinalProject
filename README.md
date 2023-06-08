@@ -9,10 +9,12 @@ At the end of the course, we had an open-ended final project where we needed to 
 
 In the paper, the only task of the wrist-worn device is to collect accelerometer data. Both the training and inference processes are run off-board on a powerful PC. We wanted to change this by running the inference model on the wrist-worn microcontroller.
 
-## Features
-1 - Real-time movement classification
-2 - User activity labelling mode
-3 - QSPI Flash storage for labeled training data
+## Methodology
+The first challenge was to choose the suitable network architecture among the ones proposed in the paper. The most successful networks are RNN's (Recurrent Neural Networks), but embedded ML toolchains such as TFLite and X-CUBE-AI require recurrent units to be unrolled into dense layers with identical parameters. Since the RNN's described in the paper have up to 32 recursions, it was impossible to fit the model into the limited memory of our boards. This limited our choice to densely connected networks.
+
+Another consideration for our choice of network was the signal processing aspect of the project. Among the dense nets proposed, the ones with overlapping windows were more successful than those with no overlap. However, implementing a sliding window with overlap presented some challenges. Since there would need to be an overlap, there would need to be a FIFO buffer, which was more difficult to implement and troubleshoot since it required tight memory management and ample debugging time. Considering our time limitation for this project (2 weeks), we decided to choose the simplest proposed network - dense network with 3 second windows without overlap.
+
+With the architecture chosen, we moved onto implementing and 
 
 ## References
 <a id="1">[1]</a>
