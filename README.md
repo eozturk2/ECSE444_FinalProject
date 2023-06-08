@@ -32,7 +32,7 @@ We believe that the difference between the reported accuracy and our model's acc
 
 Moreover, our less-than-ideal mounting method (rubber bands, wired connection to laptop that we had to carry on the other hand) meant that the accelerometer was not firmly attached. Shifts in position during active use may have contributed to the loss in accuracy as compared to the same model running on the PC.
 
-Another possible reason was our 
+Another possible reasons include our assumptions about the dataset. In the dataset, the movement data are labeled by gender. We assumed that this was not an important detail, and that the same action would generate a similar acceleration pattern regardless of the user's gender. For this reason, we simply disregarded the gender label and used all the dataset as training data. 
 
 ## References
 <a id="1">[1]</a>
